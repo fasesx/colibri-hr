@@ -4,5 +4,5 @@ const hostname = (process.env.NODE_ENV === 'development') ? 'http://localhost:30
 Vue.prototype.$hostname = hostname
 
 export {
-    hostname,
+  hostname,
 }

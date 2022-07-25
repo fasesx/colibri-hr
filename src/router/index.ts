@@ -5,7 +5,7 @@ import Statistics from '@/views/Statistics.vue'
 
 Vue.use(VueRouter)
 
-  const routes: Array<RouteConfig> = [
+const routes: Array<RouteConfig> = [
   {
     path: '/candidates',
     name: 'Home',
