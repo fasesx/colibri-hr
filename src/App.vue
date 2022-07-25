@@ -1,16 +1,14 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/candidates">Candidates</router-link> |
-      <router-link to="/statistics">Statistics</router-link>
-      <!-- <span
-        v-for="(candidate, i) in candidates"
-        :key="i"
-      >
-        {{candidate.first_name}}
-      </span> -->
+      <router-link to="/candidates">
+        Candidates
+      </router-link> |
+      <router-link to="/statistics">
+        Statistics
+      </router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
@@ -24,10 +22,14 @@ export default Vue.extend({
   },
   created() {
     fetch(this.$endpoints.candidates())
-    .then(response => response.json())
-    .then(json => {
-      setTimeout(() => this.$store.commit('setCandidates', json), 5*1000)
-    })
+      .then(response => {
+        const Link = response.headers.get('Link')?.split(',')
+        console.log(Link?.find(link => link.includes('last'))?.split('_page=').pop()?.slice(0, 2))
+        return response.json()
+      })
+      .then(json => {
+        this.$store.commit('setCandidates', json)
+      })
   },
 })
 </script>
