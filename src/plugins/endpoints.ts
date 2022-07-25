@@ -1,6 +1,6 @@
 import {hostname} from '@/globals'
 
 export default {
-  candidates: () => `${hostname}/candidates?_page=1`,
+  candidates: (page = 1) => `${hostname}/candidates?_page=${page}`,
   candidate: (id: number) => `${hostname}/candidates/${id}`
 }

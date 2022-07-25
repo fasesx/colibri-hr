@@ -21,15 +21,7 @@ export default Vue.extend({
     ...mapGetters(['candidates'])
   },
   created() {
-    fetch(this.$endpoints.candidates())
-      .then(response => {
-        const Link = response.headers.get('Link')?.split(',')
-        console.log(Link?.find(link => link.includes('last'))?.split('_page=').pop()?.slice(0, 2))
-        return response.json()
-      })
-      .then(json => {
-        this.$store.commit('setCandidates', json)
-      })
+    this.$store.dispatch('getCandidates')
   },
 })
 </script>

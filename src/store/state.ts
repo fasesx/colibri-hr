@@ -1,7 +1,8 @@
 import { IState } from "./types"
 
 const state: IState = {
-  candidates: []
+  candidates: [],
+  pagination: {}
 }
 
 export default state
