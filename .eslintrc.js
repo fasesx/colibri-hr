@@ -4,7 +4,7 @@ module.exports = {
     node: true
   },
   'extends': [
-    'plugin:vue/essential',
+    'plugin:vue/recommended',
     'eslint:recommended',
     '@vue/typescript/recommended'
   ],
@@ -29,7 +29,7 @@ module.exports = {
       {
         'prefixWithI': 'always',
       }
-    ]
+    ],
   },
   overrides: [
     {
