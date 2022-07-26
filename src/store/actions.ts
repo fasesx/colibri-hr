@@ -20,6 +20,16 @@ const actions: ActionTree<IState, any> = {
       .then((data) => {
         commit('setCandidates', data)
       })
+  },
+  getCandidate({commit}, id: number): void {
+    fetch(endpoints.candidate(id))
+      .then(response => {
+        return response.json()
+      })
+      .then((data) => {
+        console.log(data)
+        commit('setSelectedCandidate', data)
+      })
   }
 }
 

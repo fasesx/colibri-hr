@@ -6,6 +6,9 @@ const mutations: MutationTree<IState> = {
   setCandidates(state, candidates: ICandidate[]) {
     state.candidates = candidates
   },
+  setSelectedCandidate(state, candidate: ICandidate) {
+    state.selectedCandidate = candidate
+  },
   setPagination(state, pagination: IPagination) {
     console.log(pagination)
     state.pagination = pagination

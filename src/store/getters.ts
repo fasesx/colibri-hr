@@ -6,6 +6,9 @@ const getters: GetterTree<IState, any> = {
   candidates(state): ICandidate[] {
     return state.candidates
   },
+  selectedCandidate(state): ICandidate {
+    return state.selectedCandidate
+  },
   pagination(state): IPagination {
     return state.pagination
   }

@@ -9,5 +9,6 @@ export interface IPagination {
 
 export interface IState {
   candidates: ICandidate[]
+  selectedCandidate: ICandidate
   pagination: IPagination
 }

@@ -86,8 +86,9 @@ export default Vue.extend({
 
   &__table-header-item {
     justify-self: start;
-    font-size: 1.5rem;
     padding: 1.6rem 0;
+
+    @include text('body')
   }
 
   &__table-row {
