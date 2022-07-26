@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/candidates">
+      <router-link
+        class="nav-link"
+        to="/candidates"
+      >
         Candidates
-      </router-link> |
+      </router-link>
       <router-link to="/statistics">
         Statistics
       </router-link>
@@ -39,6 +42,7 @@ export default Vue.extend({
   padding: 30px;
 
   a {
+    @include text('big');
     font-weight: bold;
     color: #2c3e50;
 
@@ -46,5 +50,15 @@ export default Vue.extend({
       color: #42b983;
     }
   }
+}
+
+.nav-link {
+    @include text('title');
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
 }
 </style>

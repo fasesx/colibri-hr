@@ -1,0 +1,18 @@
+@mixin text($type) {
+  @if $type == label {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  } @else if $type == micro {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+  } @else if $type == body {
+    font-size: 1.4rem;
+    line-height: 2.2rem;
+  } @else if $type == title {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+  } @else if $type == big {
+    font-size: 3.6rem;
+    line-height: 3.8rem;
+  } @else { @error 'Only label, micro, body, title, big, special are accepted types for this mixin !'; }
+}
