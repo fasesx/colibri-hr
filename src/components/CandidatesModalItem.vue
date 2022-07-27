@@ -1,5 +1,27 @@
 <template>
-  <div class="candidates-modal-item">
+  <div
+    v-if="editable"
+    class="candidates-modal-item"
+  >
+    <label
+      :for="editable"
+      class="candidates-modal-item__label"
+    >
+      {{ name }}
+    </label>
+    <input
+      :id="editable"
+      :disabled="disabled"
+      type="text"
+      class="candidates-modal-item__value"
+      :value="value"
+      @input="onInput"
+    >
+  </div>
+  <div
+    v-else
+    class="candidates-modal-item"
+  >
     <span class="candidates-modal-item__label">
       {{ name }}
     </span>
@@ -18,9 +40,29 @@ export default Vue.extend({
       type: String,
       required: true,
     },
+    // eslint-disable-next-line vue/require-default-prop
     value: {
       type: [String, Number],
-      required: true
+      required: false,
+      validator(val) {
+        return ['string', 'number'].includes(typeof val) || val === null
+      }
+    },
+    editable: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    disabled: {
+      type: Boolean,
+      required: false,
+      default: false
+    }
+  },
+  methods: {
+    onInput(event: Event) {
+      console.log('update:input')
+      this.$emit('input', (event.target as HTMLInputElement).value)
     }
   }
 })

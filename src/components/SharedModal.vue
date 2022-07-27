@@ -26,7 +26,7 @@ export default Vue.extend({
   },
   methods: {
     close() {
-      this.$router.push({hash: ''})
+      this.$router.replace({hash: ''})
     }
   }
 })

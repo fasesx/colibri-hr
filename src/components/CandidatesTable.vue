@@ -60,10 +60,10 @@ export default Vue.extend({
   },
   methods: {
     viewCandidate(id: number) {
-      this.$router.push({hash: `#view-${id}`})
+      this.$router.replace({hash: `#view-${id}`})
     },
     editCandidate(id: number) {
-      this.$router.push({hash: `#edit-${id}`})
+      this.$router.replace({hash: `#edit-${id}`})
     },
   }
 })

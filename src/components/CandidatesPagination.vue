@@ -31,10 +31,10 @@ export default Vue.extend({
   },
   methods: {
     increasePage() {
-      this.$store.dispatch('getCandidates', this.pagination.next)
+      this.$store.dispatch('getCandidates', {page: this.pagination.next})
     },
     decreasePage() {
-      this.$store.dispatch('getCandidates', this.pagination.prev)
+      this.$store.dispatch('getCandidates', {page: this.pagination.prev})
     }
   },
 })

@@ -24,7 +24,7 @@ export default Vue.extend({
     ...mapGetters(['candidates'])
   },
   created() {
-    this.$store.dispatch('getCandidates')
+    this.$store.dispatch('getCandidates', {page: 1})
   },
 })
 </script>
@@ -45,6 +45,7 @@ export default Vue.extend({
     @include text('big');
     font-weight: bold;
     color: #2c3e50;
+    text-decoration: none;
 
     &.router-link-exact-active {
       color: #42b983;
