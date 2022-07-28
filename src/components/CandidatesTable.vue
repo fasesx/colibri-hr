@@ -40,6 +40,7 @@
 import Vue from 'vue'
 import {mapGetters} from 'vuex'
 import CandidatesPagination from '@/components/CandidatesPagination.vue'
+import { Candidate } from '@/types/api'
 
 export default Vue.extend({
   components: {
@@ -48,10 +49,10 @@ export default Vue.extend({
   data() {
     return {
       columns: {
-        'id': 'ID',
-        'first_name': 'First name',
-        'last_name': 'Last name',
-        'email': 'Email'
+        [Candidate.ID]: 'ID',
+        [Candidate.FirstName]: 'First name',
+        [Candidate.LastName]: 'Last name',
+        [Candidate.Email]: 'Email'
       },
     }
   },
