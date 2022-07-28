@@ -4,8 +4,8 @@ import { endpoints } from '@/plugins'
 // import { ICandidate } from '@/types/api'
 
 const actions: ActionTree<IState, any> = {
-  getCandidates({commit}, {page}: {page: number}): void {
-    fetch(endpoints.candidates(page))
+  async getCandidates({commit}, {page}: {page?: number} = {}): Promise<void> {
+    await fetch(endpoints.candidates(page))
       .then(response => {
         const linkHeader = response.headers.get('Link')?.split(', ') || []
         const linkHeadersArray = linkHeader.map( header => header.split( "; " ) );
