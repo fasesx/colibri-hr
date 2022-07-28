@@ -22,6 +22,9 @@ export default Vue.extend({
     CandidatesModalView,
     CandidatesModalEdit
   },
+  created() {
+    this.$store.dispatch('getCandidates', {page: 1})
+  },
 })
 </script>
 

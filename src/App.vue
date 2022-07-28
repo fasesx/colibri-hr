@@ -23,9 +23,6 @@ export default Vue.extend({
   computed: {
     ...mapGetters(['candidates'])
   },
-  created() {
-    this.$store.dispatch('getCandidates', {page: 1})
-  },
 })
 </script>
 
