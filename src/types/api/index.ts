@@ -20,7 +20,10 @@ interface ICandidate {
   [Candidate.YearsOfExperience]?: number
 }
 
+type CandidateField = ICandidate[keyof ICandidate]
+
 export {
   Candidate,
   ICandidate,
+  CandidateField
 }
