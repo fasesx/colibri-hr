@@ -65,6 +65,7 @@ export default {
         indexAxis: 'y',
         responsive: true,
         maintainAspectRatio: false,
+        backgroundColor: '#42b983',
         plugins: {
           legend: {
             display: false,

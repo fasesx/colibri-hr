@@ -67,7 +67,6 @@ export default Vue.extend({
       chartData: {},
       selectedGroupBy: Candidate.Industry,
       selectedAverageValue: Candidate.YearsOfExperience,
-      handlerFns: {} as {[key: string]: (_: CandidateField) => number},
       optionsGroupBy: [
         { text: 'Industry', value: Candidate.Industry },
         { text: 'Years of experience', value: Candidate.YearsOfExperience },
@@ -92,26 +91,33 @@ export default Vue.extend({
   },
   async created() {
     await this.$store.dispatch('getCandidates')
-    this.handlerFns = {
-      [Candidate.DateOfBirth]: this.getAge
-    }
     this.updateChartData()
   },
   methods: {
-    getAge(dateString: CandidateField) {
-      const dateStringArr = dateString?.toString().split('/') || []
-      const dateStringP = `${dateStringArr[2]}-${dateStringArr[1]}-${dateStringArr[0]}`
-      const today = new Date()
-      const birthDate = new Date(dateStringP)
-      let age = today.getFullYear() - birthDate.getFullYear()
-      const month = today.getMonth() - birthDate.getMonth()
-      if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-        age--
+    processData(fv: CandidateField, gb: CandidateField) {
+      let averageFieldValue, groupByValue
+      if (this.selectedAverageValue === Candidate.DateOfBirth) {
+        const dateStringArr = fv?.toString().split('/') || []
+        const dateStringP = `${dateStringArr[2]}-${dateStringArr[1]}-${dateStringArr[0]}`
+        const today = new Date()
+        const birthDate = new Date(dateStringP)
+        let age = today.getFullYear() - birthDate.getFullYear()
+        const month = today.getMonth() - birthDate.getMonth()
+        if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+          age--
+        }
+        averageFieldValue = age
       }
-      return age
+      if (this.selectedGroupBy === Candidate.YearsOfExperience) {
+        groupByValue = Math.round(Number(gb))
+      }
+      return {
+        averageFieldValue,
+        groupByValue
+      }
     },
     updateChartData() {
-      this.chartData = average<ICandidate>(this.candidates, this.selectedGroupBy, this.selectedAverageValue, this.handlerFns[this.selectedAverageValue])
+      this.chartData = average<ICandidate>(this.candidates, this.selectedGroupBy, this.selectedAverageValue, this.processData)
     }
   },
 })
