@@ -6,6 +6,7 @@
     <div class="shared-modal">
       <div class="shared-modal__header">
         <h1>{{ title }}</h1>
+        <IconClose @click.native="close" />
       </div>
       <div class="shared-modal__body">
         <slot />
@@ -16,8 +17,10 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import IconClose from './IconClose.vue'
 
 export default Vue.extend({
+  components: { IconClose },
   props: {
     title: {
       type: String,
@@ -26,7 +29,7 @@ export default Vue.extend({
   },
   methods: {
     close() {
-      this.$router.replace({hash: ''})
+      this.$router.replace({ hash: "" });
     }
   }
 })
@@ -39,12 +42,24 @@ export default Vue.extend({
   background:white;
 
   &__header {
-    padding: 1.6rem 0;
+    padding: 1.6rem;
     position: relative;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
 
     h1 {
       @include text('title');
       font-weight: 600;
+      flex: 1;
+      transform: translateX(1.5rem);
+    }
+
+    svg {
+      z-index: 1;
+      width: 1.5rem;
+      cursor: pointer;
+      justify-self: flex-end
     }
 
     &:after {
