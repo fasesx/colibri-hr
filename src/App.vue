@@ -5,6 +5,7 @@
         <router-link
           class="nav-link"
           to="/candidates"
+          :class="{'router-link-active': $route.name === 'Candidates'}"
         >
           Candidates
         </router-link>
@@ -46,7 +47,7 @@ export default Vue.extend({
     color: #2c3e50;
     text-decoration: none;
 
-    &.router-link-exact-active {
+    &.router-link-active {
       color: #42b983;
     }
   }
@@ -57,7 +58,7 @@ export default Vue.extend({
     font-weight: bold;
     color: #2c3e50;
 
-    &.router-link-exact-active {
+    &.router-link-active {
       color: #42b983;
     }
 }
