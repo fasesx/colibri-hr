@@ -14,9 +14,9 @@ const routes: Array<RouteConfig> = [
     }
   },
   {
-    path: '/candidates',
+    path: '/candidates/:page?',
     name: 'Candidates',
-    component: Candidates
+    component: Candidates,
   },
   {
     path: '/statistics',

@@ -11,13 +11,10 @@ const mutations: MutationTree<IState> = {
     state.selectedCandidate = candidate
   },
   setPagination(state, pagination: IPagination) {
-    console.log(pagination)
     state.pagination = pagination
   },
   updateCandidate(state, payload: ICandidate) {
     const candidateIdx = state.candidates.findIndex(candidate => candidate.id === payload.id)
-    console.log('updateCandidate')
-    console.log(candidateIdx)
     Vue.set(state.candidates, candidateIdx, payload)
   }
 }

@@ -22,9 +22,14 @@ export default Vue.extend({
     CandidatesModalView,
     CandidatesModalEdit
   },
-  created() {
-    this.$store.dispatch('getCandidates', {page: 1})
-  },
+  watch: {
+    '$route.params': {
+      handler(params) {
+        this.$store.dispatch('getCandidates', {page: params.page || 1})
+      },
+      immediate: true
+    }
+  }
 })
 </script>
 

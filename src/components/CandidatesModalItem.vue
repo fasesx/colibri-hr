@@ -61,7 +61,6 @@ export default Vue.extend({
   },
   methods: {
     onInput(event: Event) {
-      console.log('update:input')
       this.$emit('input', (event.target as HTMLInputElement).value)
     }
   }

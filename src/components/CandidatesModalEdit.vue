@@ -67,8 +67,6 @@ export default Vue.extend({
         return this.selectedCandidate
       },
       set(value: ICandidate): void {
-        console.log('setting candidate')
-        console.log(value)
         this.$store.commit('setSelectedCandidate', value)
       }
     }

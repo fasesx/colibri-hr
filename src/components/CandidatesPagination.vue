@@ -1,17 +1,19 @@
 <template>
-  <nav class="candidates__pagination">
-    <button
-      :disabled="!hasPrevPage"
-      @click="decreasePage"
+  <nav class="candidates-pagination">
+    <router-link
+      class="candidates-pagination__button"
+      :class="{'candidates-pagination__button--disabled': !hasPrevPage}"
+      :to="prevPage"
     >
       &lt;
-    </button>
-    <button
-      :disabled="!hasNextPage"
-      @click="increasePage"
+    </router-link>
+    <router-link
+      class="candidates-pagination__button"
+      :class="{'candidates-pagination__button--disabled': !hasNextPage}"
+      :to="nextPage"
     >
       &gt;
-    </button>
+    </router-link>
   </nav>
 </template>
 
@@ -22,34 +24,54 @@ import {mapGetters} from 'vuex'
 export default Vue.extend({
   computed: {
     ...mapGetters(['candidates', 'pagination']),
-    hasNextPage(): boolean {
+    hasNextPage() {
       return !!this.pagination.next
     },
-    hasPrevPage(): boolean {
+    hasPrevPage() {
       return !!this.pagination.prev
-    }
-  },
-  methods: {
-    increasePage() {
-      this.$store.dispatch('getCandidates', {page: this.pagination.next})
     },
-    decreasePage() {
-      this.$store.dispatch('getCandidates', {page: this.pagination.prev})
+    nextPage() {
+      return {
+        name: "Candidates",
+        params: {
+          page: this.pagination.next
+        }
+      }
+    },
+    prevPage() {
+      return {
+        name: "Candidates",
+        params: {
+          page: this.pagination.prev !== 1 ? this.pagination.prev : undefined
+        }
+      }
     }
-  },
+  }
 })
 </script>
 
 <style lang="scss">
-.candidates {
+.candidates-pagination {
+  margin-top: 1.6rem;
+  display: flex;
+  justify-content: center;
 
-  &__pagination {
-    margin-top: 1.6rem;
-    display: flex;
-    justify-content: center;
+  :last-child {
+    margin-left: 0.8rem;
+  }
 
-    :last-child {
-      margin-left: 0.8rem;
+  &__button {
+    cursor: pointer;
+    padding: 0.2rem 1.5rem;
+    background-color: #f0f0f0;
+    border: 1px outset #000;
+    border-radius: $radius;
+    text-decoration: none;
+    @include text('body');
+
+    &--disabled {
+      pointer-events: none;
+      opacity: 0.4;
     }
   }
 }
