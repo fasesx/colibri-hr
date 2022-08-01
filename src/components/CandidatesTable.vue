@@ -24,10 +24,16 @@
           {{ candidate[column] ? candidate[column] : '-' }}
         </td>
         <td class="candidates__table-actions">
-          <button @click="viewCandidate(candidate.id)">
+          <button
+            class="candidates__table-actions-button"
+            @click="viewCandidate(candidate.id)"
+          >
             View
           </button>
-          <button @click="editCandidate(candidate.id)">
+          <button
+            class="candidates__table-actions-button"
+            @click="editCandidate(candidate.id)"
+          >
             Edit
           </button>
         </td>
@@ -119,6 +125,10 @@ export default Vue.extend({
     :last-child {
       margin-left: 0.8rem;
     }
+  }
+
+  &__table-actions-button {
+    cursor: pointer;
   }
 }
 </style>
