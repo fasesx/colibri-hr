@@ -7,6 +7,13 @@ Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
   {
+    path: '/',
+    name: 'Homepage',
+    redirect: () => {
+      return {path: '/candidates'}
+    }
+  },
+  {
     path: '/candidates',
     name: 'Candidates',
     component: Candidates
