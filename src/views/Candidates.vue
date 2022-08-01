@@ -1,8 +1,8 @@
 <template>
   <LayoutDefault>
-    <div class="candidates">
+    <main class="candidates">
       <CandidatesTable />
-    </div>
+    </main>
     <CandidatesModalView v-if="$route.hash.startsWith('#view-')" />
     <CandidatesModalEdit v-if="$route.hash.startsWith('#edit-')" />
   </LayoutDefault>

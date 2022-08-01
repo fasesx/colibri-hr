@@ -1,6 +1,6 @@
 <template>
   <LayoutDefault>
-    <div class="statistics">
+    <main class="statistics">
       <label
         class="statistics__text"
         for="group-by-select"
@@ -44,7 +44,7 @@
           position: 'relative'
         }"
       />
-    </div>
+    </main>
   </LayoutDefault>
 </template>
 

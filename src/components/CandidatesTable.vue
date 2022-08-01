@@ -1,37 +1,38 @@
 <template>
   <div>
-    <div class="candidates__table">
-      <div class="candidates__table-header">
-        <p
+    <table class="candidates__table">
+      <tr class="candidates__table-header">
+        <th
           v-for="(column, columnIdx) in columns"
           :key="columnIdx"
           class="candidates__table-header-item"
+          scope="col"
         >
           {{ column }}
-        </p>
-      </div>
-      <div
+        </th>
+      </tr>
+      <tr
         v-for="(candidate, candidateIdx) in candidates"
         :key="candidateIdx"
         class="candidates__table-row"
       >
-        <p
+        <td
           v-for="(column, columnIdx) in Object.keys(columns)"
           :key="columnIdx"
           class="candidates__table-header-item"
         >
           {{ candidate[column] ? candidate[column] : '-' }}
-        </p>
-        <div class="candidates__table-actions">
+        </td>
+        <td class="candidates__table-actions">
           <button @click="viewCandidate(candidate.id)">
             View
           </button>
           <button @click="editCandidate(candidate.id)">
             Edit
           </button>
-        </div>
-      </div>
-    </div>
+        </td>
+      </tr>
+    </table>
     <CandidatesPagination />
   </div>
 </template>
@@ -74,6 +75,7 @@ export default Vue.extend({
 .candidates {
   
   &__table {
+    width: 100%;
     box-shadow: 0px 2px 10px rgba(0,0,0,12%);
     border-radius: $radius;
   }

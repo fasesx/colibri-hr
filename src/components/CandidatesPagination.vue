@@ -1,5 +1,5 @@
 <template>
-  <div class="candidates__pagination">
+  <nav class="candidates__pagination">
     <button
       :disabled="!hasPrevPage"
       @click="decreasePage"
@@ -12,7 +12,7 @@
     >
       &gt;
     </button>
-  </div>
+  </nav>
 </template>
 
 <script lang="ts">

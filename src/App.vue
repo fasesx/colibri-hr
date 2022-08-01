@@ -1,16 +1,18 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link
-        class="nav-link"
-        to="/candidates"
-      >
-        Candidates
-      </router-link>
-      <router-link to="/statistics">
-        Statistics
-      </router-link>
-    </div>
+    <header>
+      <nav id="nav">
+        <router-link
+          class="nav-link"
+          to="/candidates"
+        >
+          Candidates
+        </router-link>
+        <router-link to="/statistics">
+          Statistics
+        </router-link>
+      </nav>
+    </header>
     <router-view />
   </div>
 </template>
