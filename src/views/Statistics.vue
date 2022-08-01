@@ -10,6 +10,7 @@
       <select
         id="group-by-select"
         v-model="selectedGroupBy"
+        class="statistics__select"
       >
         <option
           v-for="option in optionsGroupBy"
@@ -28,6 +29,7 @@
       <select
         id="average-value"
         v-model="selectedAverageValue"
+        class="statistics__select"
       >
         <option
           v-for="option in optionsAverageValue"
@@ -128,6 +130,10 @@ export default Vue.extend({
   &__text {
     @include text('body');
     font-weight: 600;
+  }
+
+  &__select {
+    cursor: pointer;
   }
 }
 </style>

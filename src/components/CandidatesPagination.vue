@@ -67,6 +67,7 @@ export default Vue.extend({
     border: 1px outset #000;
     border-radius: $radius;
     text-decoration: none;
+    user-select: none;
     @include text('body');
 
     &--disabled {
